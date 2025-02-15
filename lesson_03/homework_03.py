@@ -136,8 +136,8 @@ trip_distance = 1600
 fuel_per_100km_in_liters = 9
 tank_capacity_in_liters = 48
 
-total_fuel_needed = trip_distance / fuel_per_100km_in_liters
-gas_station_visits = total_fuel_needed / tank_capacity_in_liters
+total_fuel_needed = (trip_distance / 100) * fuel_per_100km_in_liters
+gas_station_visits = int(total_fuel_needed / tank_capacity_in_liters)
 
-print(f'Всього для подорожі знадобиться {round(total_fuel_needed)} літрів бензину')
-print(f'Кількість різів які необхідно заїхати на заправку, кожного разу заправляючи повний бак: {round(gas_station_visits)}')
+print(f'Всього для подорожі знадобиться {total_fuel_needed} літрів бензину')
+print(f'Кількість різів які необхідно заїхати на заправку, кожного разу заправляючи повний бак: {gas_station_visits}')
