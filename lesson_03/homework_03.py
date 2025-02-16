@@ -1,7 +1,18 @@
-alice_in_wonderland = '"Would you tell me, please, which way I ought to go from here?"\n"That depends a good deal on where you want to get to," said the Cat.\n"I don't much care where ——" said Alice.\n"Then it doesn't matter which way you go," said the Cat.\n"—— so long as I get somewhere," Alice added as an explanation.\n"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'
+alice_in_wonderland = '''"Would you tell me, please, which way I ought to go from here?"\n"That depends a good deal on where you want to get to," said the Cat.\n"I don't much care where ——" said Alice.\n"Then it doesn't matter which way you go," said the Cat.\n"—— so long as I get somewhere," Alice added as an explanation.\n"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'''
+alice_in_wonderland = '\"Would you tell me, please, which way I ought to go from here?\"\n\"That depends a good deal on where you want to get to,\" said the Cat.\n\"I don\'t much care where ——\"" said Alice.\n\"Then it doesn\'t matter which way you go,\" said the Cat.\n\"—— so long as I get somewhere,\" Alice added as an explanation.\n\"Oh, you\'re sure to do that,\" said the Cat, \"if you only walk long enough.\"'
+alice_in_wonderland = '''"Would you tell me, please, which way I ought to go from here?"
+"That depends a good deal on where you want to get to," said the Cat.
+"I don't much care where ——" said Alice.
+"Then it doesn't matter which way you go," said the Cat.
+"—— so long as I get somewhere," Alice added as an explanation.
+"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'''
+
+print(alice_in_wonderland)
+
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
 # task 02 == Знайдіть та екрануйте всі символи одинарної дужки у тексті \'
 # task 03 == Виведіть змінну alice_in_wonderland на друк
+
 
 
 """
@@ -16,6 +27,17 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 моря становить 37 800 км2. Яку площу займають Чорне та Азов-
 ське моря разом?
 """
+black_sea_km2 = 436402
+print('Площа Чорного моря становить 436 402 км2,')
+
+azov_sea_km2 = 37800
+print('а площа Азовського моря становить 37 800 км2.')
+
+print('Яку площу займають Чорне та Азовське моря разом?')
+
+total_area = black_sea_km2 + azov_sea_km2
+print(f"Загальна площа Чорного + Азовського морів становить разом {total_area} км².\n\n ")
+
 
 
 # task 05
@@ -25,6 +47,30 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 250 449 товарів. На другому та третьому – 222 950 товарів.
 Знайдіть кількість товарів, що розміщені на кожному складі.
 """
+total_warehouse_products = 375291
+print('Мережа супермаркетів має 3 склади, де всього розміщено 375 291 товар.')
+first_second_warehouse_products = 250449 
+print('На першому та другому складах перебуває 250 449 товарів.')
+second_third_warehouse_products = 222950
+print('На другому та третьому 222 950 товарів.\nЗнайдіть кількість товарів, що розміщені на кожному складі.\n')
+
+third_warehouse_products = total_warehouse_products - first_second_warehouse_products
+print(f'''Спочатку ми дізнаємось, скільки товарів на третьому складі.
+Для цього віднімаємо кількість товарів на першому та другому складах від загальної кількості товарів на всіх складах.
+На третьому складі: {third_warehouse_products} товарів.''')
+
+second_warehouse_products = second_third_warehouse_products - third_warehouse_products
+print(f'''Потім ми знаходимо, скільки товарів на другому складі.
+Ми віднімаємо кількість товарів на третьому складі з суми товарів на другому та третьому складах.
+Кількість товарів на другому складі: {second_warehouse_products}.''')
+
+first_warehouse_products = first_second_warehouse_products - second_warehouse_products
+print(f'''В кінці ми знаходимо кількість товарів на першому складі.
+Для цього віднімаємо кількість товарів на другому складі від суми товарів на першому та другому складах.
+Кількість товарів на першому складі: {first_warehouse_products}.\n''')
+print(f'''Відповідь: Кількість товарів на першому складі: {first_warehouse_products}
+Кількість товарів на другому складі: {second_warehouse_products}
+На третьому складі: {third_warehouse_products}\n\n''')
 
 
 # task 06
@@ -35,6 +81,21 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 вартість комп’ютера.
 """
 
+print('''Михайло разом з батьками вирішили купити комп’ютер, скориставшись послугою «Оплата частинами». 
+Відомо, що сплачувати необхідно буде півтора року по 1179 грн/місяць. 
+Обчисліть вартість комп’ютера.\n''')
+total_months = int(12 * 1.5)
+# total_months = int(total_months)
+print(f'Переведемо півтора року в місяці: 1 рік = 12 місяців, отже 1,5 року = 1,5 * 12 = {total_months} місяців.')
+payment = 1179
+cost_computer = total_months * payment
+print(f"""Знайдемо загальну вартість комп'ютера: 
+Кількість місяців = 18.
+Місячний платіж = 1179 грн.
+Щоб знайти загальну суму, помножимо кількість місяців на платіж за місяць: 
+Загальна вартість = 1179×18
+Вартість комп'ютера становить: {cost_computer} грн.\n\n""")
+
 
 # task 07
 """
@@ -43,7 +104,44 @@ a) 8019 : 8     d) 7248 : 6
 b) 9907 : 9     e) 7128 : 5
 c) 2789 : 5     f) 19224 : 9
 """
+a = 8019 % 8
+print(f'''Коли ми ділимо число, іноді воно не ділиться рівно, і залишається деяка частина, яка не входить у результат повного ділення. 
+Ця частина називається остачею.
+Ділимо: 8019 ÷ 8 = 1002 цілих
+1002 × 8 = 8016
+Остача: 8019 - 8016 = 3
+Відповідь: {a}''')
 
+b = 9907 % 9
+print(f''' 
+Ділимо: 9907 ÷ 9 = 1100 цілих
+1100 × 9 = 9900
+Остача: 9907 - 9900 = 7
+Відповідь: {b}\n''')
+
+c = 2789 % 5
+print(f'''Ділимо: 2789 ÷ 5 = 557 цілих
+557 × 5 = 2785
+Остача: 2789 - 2785 = 4
+Відповідь: {c}\n''')
+
+d = 7248 % 6
+print(f'''Ділимо: 7248 ÷ 6 = 1208 цілих
+1208 × 6 = 7248
+Остача: 0 (число ділиться без залишку)
+Відповідь: {d}\n''')
+
+e = 7128 % 5
+print(f'''Ділимо: 7128 ÷ 5 = 1425 цілих
+1425 × 5 = 7125
+Остача: 7128 - 7125 = 3
+Відповідь: {e}\n''')
+
+f = 19224 % 9
+print(f'''Ділимо: 19224 ÷ 9 = 2136 цілих
+2136 × 9 = 19224
+Остача: 0 (число ділиться без залишку)
+Відповідь: {f}\n\n''')
 
 # task 08
 """
@@ -58,6 +156,34 @@ c) 2789 : 5     f) 19224 : 9
 Вода            3           21 грн
 """
 
+print(f'''Іринка, готуючись до свого дня народження, склала список того, що їй потрібно замовити. 
+Обчисліть, скільки грошей знадобиться для даного її замовлення.
+Назва товару    Кількість   Ціна
+Піца велика     4           274 грн
+Піца середня    2           218 грн
+Сік             4           35 грн
+Торт            1           350 грн
+Вода            3           21 грн\n''')
+
+Big_pizza = 4 * 274
+print(f'Рахуємо вартість кожного товару:\nПіца велика: 4 × 274 = {Big_pizza} грн')
+
+Medium_pizza = 2 * 218
+print(f'Піца середня: 2 × 218 = {Medium_pizza} грн')
+
+Juice = 4 * 35
+print(f'Сік: 4 × 35 = {Juice} грн')
+
+Tort = 1 * 350
+print(f'Торт: 1 × 350 = {Tort} грн')
+
+Water = 3 * 21
+print(f'Вода: 3 × 21 = {Water} грн\n')
+
+Result = Big_pizza + Medium_pizza + Juice + Tort + Water
+print(f'''Додаємо всі суми: 1096 + 436 + 140 + 350 + 63 = {Result} грн.
+Отже, Іринці потрібно {Result}грн.\n\n''')
+
 
 # task 09
 """
@@ -67,6 +193,20 @@ c) 2789 : 5     f) 19224 : 9
 Ігорю, щоб вклеїти всі фото?
 """
 
+print('''Ігор займається фотографією. Він вирішив зібрати всі свої 232
+фотографії та вклеїти в альбом. 
+На одній сторінці може бути розміщено щонайбільше 8 фото. 
+Скільки сторінок знадобиться Ігорю, щоб вклеїти всі фото?\n''')
+
+all_photos = 232
+print(f'У нього є {all_photos} фотографії.')
+one_page_photos = 8
+print(f'Ігор може вклеїти {one_page_photos}  фотографій на одну сторінку альбому.')
+sum_pages = int(all_photos / one_page_photos)
+print (f'''Щоб дізнатися, скільки сторінок знадобиться, треба поділити всі фото на кількість фото на одній сторінці: 
+{all_photos} ÷ {one_page_photos} = {sum_pages}\n''')
+
+print(f'Відповідь: Ігорю потрібно {sum_pages} сторінок, щоб вклеїти всі фото.\n\n')
 
 # task 10
 """
@@ -79,3 +219,38 @@ c) 2789 : 5     f) 19224 : 9
 равку під час цієї подорожі, кожного разу заправляючи пов-
 ний бак?
 """
+
+print('''Родина зібралася в автомобільну подорож із Харкова в Буда-
+пешт. Відстань між цими містами становить 1600 км. Відомо,
+що на кожні 100 км необхідно 9 літрів бензину. Місткість баку
+становить 48 літрів.
+1) Скільки літрів бензину знадобиться для такої подорожі?
+2) Скільки щонайменше разів родині необхідно заїхати на зап-
+равку під час цієї подорожі, кожного разу заправляючи пов-
+ний бак?\n''')
+
+Charkov_Budapest = 1600
+every_100_кm = 9
+tank = 48
+liters_petrols = int((Charkov_Budapest / 100) * 9)
+
+print(f'''1) Скільки бензину треба?
+Машина витрачає 9 літрів на 100 км.
+Відстань від Харкова до Будапешта — 1600 км.
+Рахуємо:
+1600 ÷ 100 × 9 = {liters_petrols}  літри
+Отже, треба {liters_petrols} літри бензину.\n''')
+
+number_car_refuelings = int((liters_petrols - tank)/ tank)
+
+print(f'''2) Скільки разів потрібно заїхати на заправку?
+Об’єм бензобака — 48 літрів.
+144 літри — це 3 баки.
+Оскільки перед виїздом бак повний, то треба 2 рази заправитися.\n''')
+
+print(f'''Відповідь: потрібн {liters_petrols} літри бензину, {number_car_refuelings} заправки.''')
+
+
+
+
+
