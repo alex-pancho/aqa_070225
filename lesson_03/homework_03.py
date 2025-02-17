@@ -1,7 +1,16 @@
-alice_in_wonderland = '"Would you tell me, please, which way I ought to go from here?"\n"That depends a good deal on where you want to get to," said the Cat.\n"I don't much care where ——" said Alice.\n"Then it doesn't matter which way you go," said the Cat.\n"—— so long as I get somewhere," Alice added as an explanation.\n"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'
+alice_in_wonderland = (
+    "Would you tell me, please, which way I ought to go from here?\n"
+    "That depends a good deal on where you want to get to, said the Cat.\n"
+    "I don't much care where —— said Alice.\n"
+    "Then it doesn't matter which way you go, said the Cat.\n"
+    "—— so long as I get somewhere, Alice added as an explanation.\n"
+    "Oh, you're sure to do that, said the Cat, if you only walk long enough."
+)
+print(alice_in_wonderland)
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
 # task 02 == Знайдіть та екрануйте всі символи одинарної дужки у тексті \'
 # task 03 == Виведіть змінну alice_in_wonderland на друк
+
 
 
 """
@@ -16,6 +25,10 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 моря становить 37 800 км2. Яку площу займають Чорне та Азов-
 ське моря разом?
 """
+black_sea = 436_402
+azov_sea = 37_800
+result = black_sea + azov_sea
+print(f"Площа морів Чорного та Азовського разом: {result} км2")
 
 
 # task 05
@@ -25,7 +38,15 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 250 449 товарів. На другому та третьому – 222 950 товарів.
 Знайдіть кількість товарів, що розміщені на кожному складі.
 """
-
+total_goods = 375_291
+first_second = 250_449
+second_third = 222_950
+first = total_goods - second_third
+second = first_second - first
+third = total_goods - first - second
+print(f"На першому складі: {first} товарів")
+print(f"На другому складі: {second} товарів")
+print(f"На третьому складі: {third} товарів")
 
 # task 06
 """
@@ -34,6 +55,10 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 вати необхідно буде півтора року по 1179 грн/місяць. Обчисліть
 вартість комп’ютера.
 """
+months = 18 
+months_payment = 1179
+total_pay = months * months_payment
+print(f"Вартість компʼютера: {total_pay} грн")
 
 
 # task 07
@@ -43,6 +68,18 @@ a) 8019 : 8     d) 7248 : 6
 b) 9907 : 9     e) 7128 : 5
 c) 2789 : 5     f) 19224 : 9
 """
+a = 8019 % 8
+b = 9907 % 9
+c = 2789 % 5 
+d = 7248 % 5 
+e = 7128 % 5 
+f = 19924 % 9 
+print(f"Остача від ділення а: {a}")
+print(f"Остача від ділення b: {b}")
+print(f"Остача від ділення c: {c}")
+print(f"Остача від ділення d: {d}")
+print(f"Остача від ділення e: {e}")
+print(f"Остача від ділення f: {f}")
 
 
 # task 08
@@ -57,6 +94,13 @@ c) 2789 : 5     f) 19224 : 9
 Торт            1           350 грн
 Вода            3           21 грн
 """
+pizza_big = 4 * 274
+pizza_medium = 2 * 218
+juice = 4 * 35
+cake = 350
+water = 3 * 21
+total_score = pizza_big + pizza_medium + juice + cake + water
+print(f"Загальна сума замовлення: {total_score} грн")
 
 
 # task 09
@@ -66,6 +110,13 @@ c) 2789 : 5     f) 19224 : 9
 розміщено щонайбільше 8 фото. Скільки сторінок знадобиться
 Ігорю, щоб вклеїти всі фото?
 """
+photos = 232
+photos_per_page = 8
+pages = photos // photos_per_page
+if photos % photos_per_page > 0:
+    pages += 1 
+print(f"Ігорю знадобиться {pages} сторінок для вклеювання всіх фото")
+
 
 
 # task 10
@@ -79,3 +130,13 @@ c) 2789 : 5     f) 19224 : 9
 равку під час цієї подорожі, кожного разу заправляючи пов-
 ний бак?
 """
+distance = 1600
+fuel_per_100km = 9
+tank_capacity = 48
+fuel = distance / 100 * fuel_per_100km
+print(f"Для подорожі з Харкова в Будапешт знадобиться {fuel} літрів бензину")
+refills = fuel // tank_capacity
+if fuel % tank_capacity > 0:
+    refills += 1    
+print(f"Родині необхідно заїхати на заправку {refills} разів")
+
