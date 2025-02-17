@@ -145,7 +145,7 @@ print(varaiable)
 varaiable = input(query_sting_2)
 print(varaiable)
 
-out = "Results of the {} text {}".format(year, event)
+out = "Results of the {} text {}, {}".format(year, event, varaiable)
 out2 = "Results of the %i text %s" % (year, event)
 print(out)
 print(out2)

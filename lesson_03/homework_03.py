@@ -1,8 +1,21 @@
-alice_in_wonderland = '"Would you tell me, please, which way I ought to go from here?"\n"That depends a good deal on where you want to get to," said the Cat.\n"I don't much care where ——" said Alice.\n"Then it doesn't matter which way you go," said the Cat.\n"—— so long as I get somewhere," Alice added as an explanation.\n"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'
+TASK_START_TEMPLATE = "\n\n---Task {0}---\n"
+
+
+def print_task(task_number):
+    print(TASK_START_TEMPLATE.format(task_number))
+
+
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
 # task 02 == Знайдіть та екрануйте всі символи одинарної дужки у тексті \'
 # task 03 == Виведіть змінну alice_in_wonderland на друк
-
+print_task("1-3")
+alice_in_wonderland = '''"Would you tell me, please, which way I ought to go from here?"
+"That depends a good deal on where you want to get to," said the Cat.
+"I don\'t much care where ——" said Alice.
+"Then it doesn\'t matter which way you go," said the Cat.
+"—— so long as I get somewhere," Alice added as an explanation.
+"Oh, you\'re sure to do that," said the Cat, "if you only walk long enough."'''
+print(alice_in_wonderland)
 
 """
     # Задачі 04 -10:
@@ -16,6 +29,19 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 моря становить 37 800 км2. Яку площу займають Чорне та Азов-
 ське моря разом?
 """
+print_task(4)
+black_square = 436_402
+azov_square = 37_800
+total_square = black_square + azov_square
+print(
+    f"Задача:\nПлоща Чорного моря становить {black_square} км\u00b2,"
+    f"а площа Азовського моря становить {azov_square} км\u00b2."
+    "Яку площу займають Чорне та Азов-ське моря разом?\n"
+    f"""Дано:\nПлоща Чорного моря - {black_square} км\u00b2
+Площа Азовського моря - {azov_square} км\u00b2
+Розв'язок:\n{black_square} + {azov_square} = {total_square}
+Відповідь: Чорне та Азовське море займають {total_square}\u00b2"""
+)
 
 
 # task 05
@@ -25,7 +51,27 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 250 449 товарів. На другому та третьому – 222 950 товарів.
 Знайдіть кількість товарів, що розміщені на кожному складі.
 """
-
+print_task(5)
+total_goods = 375_291
+goods_1_2 = 250_449
+goods_2_3 = 222_950
+goods_3 = total_goods - goods_1_2
+goods_1 = total_goods - goods_2_3
+goods_2 = total_goods - goods_1 - goods_3
+print(
+    f"Задача:\nМережа супермаркетів має 3 склади, де всього розміщено {total_goods} товар."
+    f"На першому та другому складах перебуває {goods_1_2} товарів."
+    f"На другому та третьому – {goods_2_3} товарів."
+    "Знайдіть кількість товарів, що розміщені на кожному складі.\n"
+    f"""Дано:
+Перший + другий склад = {goods_1_2} товарів
+Другий + третій склад = {goods_2_3} товарів
+Розв'язок:\nНа третьому складі - {total_goods} - {goods_1_2} = {goods_3}
+На першому складі - {total_goods} - {goods_2_3} = {goods_1}
+На другому складі - {total_goods} - {goods_1} - {goods_3} = {goods_2}
+Відповідь: На першому складі {goods_1} товарів, на другому складі {goods_2} товарів,"""
+    f"на третьому складі {goods_3} товарів."
+)
 
 # task 06
 """
@@ -34,7 +80,21 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 вати необхідно буде півтора року по 1179 грн/місяць. Обчисліть
 вартість комп’ютера.
 """
-
+print_task(6)
+period = 18
+monthly = 1179
+cost = monthly * period
+print(
+    f"Задача:\nМихайло разом з батьками вирішили купити комп’ютер,"
+    "скориставшись послугою «Оплата частинами»."
+    f"Відомо, що сплачувати необхідно буде півтора року по {monthly} грн/місяць."
+    "Обчисліть вартість комп’ютера.\n"
+    f"""Дано:
+Термін - півтора року ({period} місяців)
+Оплата в мысяць - {monthly} грн/місяць
+Розв'язок:\n{monthly} * {period} = {cost}
+Відповідь: Вартість компю'ютера складає - {cost} грн."""
+)
 
 # task 07
 """
@@ -43,7 +103,27 @@ a) 8019 : 8     d) 7248 : 6
 b) 9907 : 9     e) 7128 : 5
 c) 2789 : 5     f) 19224 : 9
 """
-
+print_task(7)
+value_a = 8019 % 8
+value_b = 9907 % 9
+value_c = 2789 % 5
+value_d = 7248 % 6
+value_e = 7128 % 5
+value_f = 19224 % 9
+print(
+    f"""Задача:
+Знайди остачу від діленя чисел:
+a) 8019 : 8     d) 7248 : 6
+b) 9907 : 9     e) 7128 : 5
+c) 2789 : 5     f) 19224 : 9
+Розв'язок:
+a - 80919 : 8 = {value_a}
+b - 9907 : 9 = {value_b}
+c - 2789 : 5 = {value_c}
+d - 7248 : 6 = {value_d}
+e - 7128 : 5 = {value_e}
+f - 19224 : 9 = {value_f}"""
+)
 
 # task 08
 """
@@ -57,7 +137,49 @@ c) 2789 : 5     f) 19224 : 9
 Торт            1           350 грн
 Вода            3           21 грн
 """
-
+print_task(8)
+cost_pz_b = 274
+quant_pz_b = 4
+total_pz_b = cost_pz_b * quant_pz_b
+cost_pz_m = 218
+quant_pz_m = 2
+total_pz_m = cost_pz_m * quant_pz_m
+cost_jc = 35
+quant_jc = 4
+total_jc = cost_jc * quant_jc
+cost_ck = 350
+quant_ck = 1
+total_ck = cost_ck * quant_ck
+cost_wt = 21
+quant_wt = 3
+total_wt = cost_wt * quant_wt
+total_cost = total_pz_b + total_pz_m + total_jc + total_ck + total_wt
+print(
+    f"""Задача:
+Іринка, готуючись до свого дня народження, склала список того,
+що їй потрібно замовити. Обчисліть, скільки грошей знадобиться
+для даного її замовлення.
+Назва товару    Кількість   Ціна
+Піца велика     4           274 грн
+Піца середня    2           218 грн
+Сік             4           35 грн
+Торт            1           350 грн
+Вода            3           21 грн
+Дано:
+Піца велика - {quant_pz_b} шт. по {cost_pz_b} грн
+Піца середня - {quant_pz_m} шт. по {cost_pz_m} грн
+Сік - {quant_jc} шт. по {cost_jc} грн
+Торт - {quant_ck} шт. по {cost_ck} грн
+Вода - {quant_wt} шт. по {cost_wt} грн
+Розв'язок:\nВартість всіх великих піц = {quant_pz_b} * {cost_pz_b} = {total_pz_b} грн
+Вартість всіх середніх піц = {quant_pz_m} * {cost_pz_m} = {total_pz_m} грн
+Вартість всіх соків = {quant_jc} * {cost_jc} = {total_jc} грн
+Вартість торту = {quant_ck} * {cost_ck} = {total_ck} грн
+Вартість всієї води = {quant_wt} * {cost_wt} = {total_wt} грн
+Загальна вартість товарів = {total_pz_b} + {total_pz_m} + {total_jc} + {total_ck} + {total_wt} = {total_cost} грн
+Відповідь: Для замовлення знадобиться {total_cost} грн.
+"""
+)
 
 # task 09
 """
@@ -66,8 +188,25 @@ c) 2789 : 5     f) 19224 : 9
 розміщено щонайбільше 8 фото. Скільки сторінок знадобиться
 Ігорю, щоб вклеїти всі фото?
 """
+print_task(9)
+import math
 
-
+total_pic = 232
+pic_per_pg = 8
+total_pg = math.ceil(total_pic / pic_per_pg)
+print(
+    f"""Задача:
+Ігор займається фотографією. Він вирішив зібрати всі свої {total_pic}
+фотографії та вклеїти в альбом. На одній сторінці може бути
+розміщено щонайбільше {pic_per_pg} фото. Скільки сторінок знадобиться
+Ігорю, щоб вклеїти всі фото?
+Дано:
+Всього фото - {total_pic}
+Кількість фото на сторінці - {pic_per_pg}
+Розв'язок:
+{total_pic} / {pic_per_pg} = {total_pg}
+Відвовідь: Для того, щоб влкеїти всі фото потрібно {total_pg} сторінок."""
+)
 # task 10
 """
 Родина зібралася в автомобільну подорож із Харкова в Буда-
@@ -79,3 +218,32 @@ c) 2789 : 5     f) 19224 : 9
 равку під час цієї подорожі, кожного разу заправляючи пов-
 ний бак?
 """
+print_task(10)
+total_distance = 1600
+distance = 100
+gas_per_km = 9
+tank = 48
+gas_for_journey = total_distance / distance * gas_per_km
+formatted_journey = (
+    int(gas_for_journey) if gas_for_journey.is_integer() else gas_for_journey
+)
+count_refuel = math.ceil(formatted_journey / tank)
+print(
+    f"""Здача:
+Родина зібралася в автомобільну подорож із Харкова в Буда-
+пешт. Відстань між цими містами становить {total_distance} км. Відомо,
+що на кожні {distance} км необхідно {gas_per_km} літрів бензину. Місткість баку
+становить {tank} літрів.
+1) Скільки літрів бензину знадобиться для такої подорожі?
+2) Скільки щонайменше разів родині необхідно заїхати на зап-
+равку під час цієї подорожі, кожного разу заправляючи пов-
+ний бак?
+Дано:
+Загальна відстань - {total_distance} км
+Бензин на {distance} км - {gas_per_km} л
+Розв'язок 1:
+{total_distance} / {distance} * {gas_per_km} = {formatted_journey}
+Розв'язок 2:
+{formatted_journey} / {tank} = {count_refuel}
+Відповідь: Для подорожі знадобиться {formatted_journey} літрів та щонайменше {count_refuel} разів заправити повний бак"""
+)
