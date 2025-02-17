@@ -1,8 +1,5 @@
-TASK_START_TEMPLATE = "\n\n---Task {0}---\n"
-
-
 def print_task(task_number):
-    print(TASK_START_TEMPLATE.format(task_number))
+    print(f"\n\n---Task {task_number}---\n")
 
 
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
