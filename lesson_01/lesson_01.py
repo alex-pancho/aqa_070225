@@ -14,7 +14,7 @@ user_salary = 10000000.23 # хай ця зарплата справді буде
 print(user_name, user_age, user_salary)
 
 if user_age > 35:
-   print("Hello!")
+    print("Hello!")
 else:
     print("Hi, bro!")
 
