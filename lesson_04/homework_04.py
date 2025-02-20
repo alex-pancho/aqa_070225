@@ -45,7 +45,7 @@ print(f"Літера 'h' зустрічається в тексті {h_count} р
 # task 05
 """ Виведіть, скільки слів у тексті починається з Великої літери?
 """
-capitals_count = sum(1 for i in adwentures_of_tom_sawer if i.isupper())
+capitals_count = sum(1 for i in adwentures_of_tom_sawer.split() if i.istitle())
 print(f"{capitals_count} слів починаються з великої літери в тексті\n")
 
 # task 06
@@ -71,12 +71,10 @@ print(f"Четверте речення в нижньому регістрі: {f
 # task 09
 """ Перевірте чи починається якесь речення з "By the time".
 """
-sentence_count = 0
 sentence_not_found = True
-for i in adwentures_of_tom_sawer_sentences:
-    sentence_count += 1
-    if i.find("By the time") == 0:
-        print(f"Так, {sentence_count} речення")
+for count, sentence in enumerate(adwentures_of_tom_sawer_sentences, start=1):
+    if sentence.startswith("By the time"):
+        print(f"Так, {count} речення")
         sentence_not_found = False
 if sentence_not_found:
     print(f"Ні, жодне речення не починається з 'By the time'")
@@ -84,5 +82,5 @@ if sentence_not_found:
 # task 10
 """ Виведіть кількість слів останнього речення з adwentures_of_tom_sawer_sentences.
 """
-word_count = adwentures_of_tom_sawer_sentences[-1].count(" ")
+word_count = len(adwentures_of_tom_sawer_sentences[-1].split())
 print(f"\nВ останньому реченні {word_count} слова")
