@@ -90,7 +90,7 @@ print('-----------------------------------------')
 Збережіть результат у змінній adwentures_of_tom_sawer_sentences
 """
 
-adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split('.')
+adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split('. ')
 adwentures_of_tom_sawer_sentences = "\n".join(adwentures_of_tom_sawer_sentences)
 
 print(f'''Розділена змінна adwentures_of_tom_sawer по кінцю речення (по крапці): 
@@ -102,7 +102,7 @@ print('-----------------------------------------')
 """ Виведіть четверте речення з adwentures_of_tom_sawer_sentences.
 Перетворіть рядок у нижній регістр.
 """
-fourth_sentence = adwentures_of_tom_sawer_sentences[407:644].lower()
+fourth_sentence = adwentures_of_tom_sawer_sentences[404:642].lower()
 print(f'''Виведений четвертий рядок у нижньому регістрі: 
 {fourth_sentence}''')
 
@@ -113,11 +113,11 @@ print('-----------------------------------------')
 """
 # Виведено окремо кожне речення по індексах
 
-first_sentence = adwentures_of_tom_sawer_sentences[0:75]
-second_sentence = adwentures_of_tom_sawer_sentences[75:289].strip()
-third_sentence = adwentures_of_tom_sawer_sentences[289:407].strip()
-fourth_sentence = adwentures_of_tom_sawer_sentences[407:644].strip()
-fifth_sentence = adwentures_of_tom_sawer_sentences[644:786].strip()
+first_sentence = adwentures_of_tom_sawer_sentences[0:76].strip()
+second_sentence = adwentures_of_tom_sawer_sentences[76:288].strip()
+third_sentence = adwentures_of_tom_sawer_sentences[288:404].strip()
+fourth_sentence = adwentures_of_tom_sawer_sentences[404:642].strip()
+fifth_sentence = adwentures_of_tom_sawer_sentences[642:781].strip()
 
 # Перевіряємо чи кожне речення починається з "By the time"
 
