@@ -46,13 +46,13 @@ car_data = {
 }
 search_criteria = (2017, 1.6, 36000)
 found_cars = {key: value for key, value in car_data.items()
-        if (value[1] >= search_criteria[0])
-        & (value[2] >= search_criteria[1])
-        & (value[4] <= search_criteria[2])}
+              if (value[1] >= search_criteria[0])
+              & (value[2] >= search_criteria[1])
+              & (value[4] <= search_criteria[2])}
 result_dict = dict(sorted(found_cars.items(), key=lambda car: car[1][4]))
-i=0
+i = 0
 print("Five first found elements: ")
-for key,value in result_dict.items():
-    if i<5:
+for key, value in result_dict.items():
+    if i < 5:
         print(key, ": ", value)
-        i+=1
+        i += 1
