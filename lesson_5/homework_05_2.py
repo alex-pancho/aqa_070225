@@ -27,6 +27,7 @@ people_records.insert(0,('Sara', 'White', 33, 'Teacher', 'London'))
 
 # Task 2
 people_records[1], people_records[5] = people_records[5], people_records[1]
+print(people_records)
 
 # Task 3
 indexes_to_check = [6, 10, 13]
