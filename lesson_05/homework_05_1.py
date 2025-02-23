@@ -56,9 +56,12 @@ for key in car_data:
     ):
         cars_found[key] = car_data[key]
 cars_found_sorted = dict(sorted(cars_found.items(), key=lambda item: item[1][4]))
+print("Cars found:", list(cars_found_sorted.items())[0:5]) # Вніс правку для виводу перших 5 елементів (можна і циклом)
+"""
 i = 0
 for key in cars_found_sorted:
     print(f"{key}: {cars_found_sorted[key]}")
     i += 1
     if i == 5:
         break
+"""
