@@ -19,7 +19,13 @@ base_dict = {'contry':'Ukraine', 'continent': 'Europe', 'size': 123}
 add_dict = {"a":1, "b":2, "c":2, "d":3, 'size': 12}
 # task 4. Знайдіть ключ з максимальним значенням у словнику add_dict
 print("\n Task 04")
-max = 0
+print("Solution #1")
+max_add_dict_value = max(add_dict, key=add_dict.get)
+print(max_add_dict_value)
+
+print("Solution #2")
+max = int((list(add_dict.items())[0])[1])
+key = str((list(add_dict.items())[0])[0])
 for element in add_dict:
     if add_dict[element] > max:
         max = add_dict[element]
@@ -39,7 +45,7 @@ print(new_dict)
 # task 6. Об'єднайте два словника base_dict та add_dict  в новий словник sum_dict
 # Якщо ключі збігаються, то перетворіть значення в строку та об'єднайте їх
 print("\n Task 06")
-sum_dict = base_dict
+sum_dict = base_dict.copy()
 for element in add_dict:
     if element not in sum_dict:
         sum_dict[element] = add_dict[element]
