@@ -8,8 +8,12 @@ print(f"Унікальні елементи в small_list: {uniq_elements}")
 
 # task 2. Знайдіть середнє арифметичне всіх елементів у списку small_list
 print("____________task 2_____________")
-math_avarage = sum(small_list) / len(small_list)
-print(f"Середнє арифметичне всіх елементів у списку small_list: {math_avarage}")
+if len(small_list) != 0:
+    math_avarage = sum(small_list) / len(small_list)
+    print(f"Середнє арифметичне всіх елементів у списку small_list: {math_avarage}")
+else:
+    print(f"Ділити на нуль заборонено.")
+
 
 
 # task 3. Перевірте, чи є в списку big_list дублікати
@@ -85,7 +89,7 @@ print(f"Множина всіх символв: {set_line}")
 
 
 # task 8. Обчисліть суму елементів двох множин, які не є спільними
-print("____________task 7_____________")
+print("____________task 8_____________")
 set_1 = {1, 2, 3, 4, 5}
 set_2 = {4, 6, 5, 10}
 
