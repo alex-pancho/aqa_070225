@@ -4,6 +4,11 @@
 Напишіть оператор if, щоб перевірити, чи колір прибульця 'green'.
 Якщо так, надрукуйте повідомлення про те, що гравець щойно заробив 5 балів.
 """
+alien_color = ['green', 'yellow', 'red']
+for color in alien_color:
+    print(color)
+    if color == 'green':
+        print("You just earned 5 points")
 
 # task 2
 """  Скопіюйте пеопередню відповідь, змініть і доповніть її умовою else.
@@ -11,7 +16,13 @@
 Якщо колір прибульця не зелений, надрукуйте, що гравець щойно заробив 10 балів.
 Зробіть так, щоб виводилася умова else.
 """
-
+alien_color = ['yellow', 'red', 'green']
+for color in alien_color:
+    print(color)
+    if color == 'green':
+        print("You just earned 5 points")
+    else: 
+        print("You just earned 10 points")
 # task 3
 # task 4
 """  Скопіюйте пеопередню відповідь, змініть і доповніть її умовою elif.
@@ -21,12 +32,30 @@
 Якщо прибулець червоний, надрукуйте повідомлення про те, що гравець заробив 15 очок
 + напишіть цикл for що перебере і обробить всі значення списку alien_color
 """
+alien_color = ['yellow', 'red', 'green']
+for color in alien_color:
+    print(color)
+    if color == 'green':
+        print("You just earned 5 points")
+    elif color == 'red':
+        print("You just earned 15 points")
 
+    else: 
+        print("You just earned 10 points")
 # task 5
 """  Начинки для піци (pizza_topping): напишіть цикл, який пропонує користувачеві ввести ряд начинок
 для піци, доки він не введе значення 'quit'. Коли вони введуть кожну начинку,
 надрукуйте повідомлення про те, що ви додасте цю начинку до їхньої піци.
 """
+pizza = list() 
+while True:
+    pizza_topping = input("Enter all pizza toppings and after you are done enter quit: ")
+    if pizza_topping == "quit":
+        break
+    pizza.append(pizza_topping)
+    print(pizza_topping, " will be added to you pizza")
+
+
 
 # task 6
 """  Напишіть програму, яка знаходить суму всіх цифр натурального числа, яке вводить користувач.
@@ -35,6 +64,8 @@
 Введіть натуральне число: 12345
 Сума цифр числа 12345: 15
 """
+number = []
+for entered_number
 
 # task 7
 """  Потрібно написати програму, яка просить користувача ввести числа, доки він не введе 0.
