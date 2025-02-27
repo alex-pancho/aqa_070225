@@ -68,9 +68,9 @@ number = input("Введіть натуральне число:\n")
 number_is_natural = False
 while not number_is_natural:
     if number.isdigit() and int(number)>0:
-           number_is_natural = True
+        number_is_natural = True
     else: 
-         number = input("Введіть натуральне число:\n")
+        number = input("Введіть натуральне число:\n")
 sum = 0
 for n in number:
     sum +=int(n) 
@@ -116,15 +116,17 @@ for guesses in range(max_guesses):
     guess_number = input("Введіть ціле число \n")
     guesses += 1
     try:
-        if int(guess_number) == secret_number:
-            print("Ви виграли!")
-            break
-        elif int(guess_number) > secret_number:
-            print("Припущення занадто велике")
-        elif int(guess_number) < secret_number:
-            print("Припущення занадто мале")
+        int_guess_number = int(guess_number)
     except ValueError:
         print("Ви ввели не ціле число")
+        continue
+    if int_guess_number == secret_number:
+        print("Ви виграли!")
+        break
+    elif int_guess_number > secret_number:
+        print("Припущення занадто велике")
+    elif int_guess_number < secret_number:
+        print("Припущення занадто мале")
 print("Гра закінчена")     
 # task 9
 """  Задача з використанням циклу for та continue. Задано список фруктів 'fruits'
