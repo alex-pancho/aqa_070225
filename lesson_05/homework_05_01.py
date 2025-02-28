@@ -45,14 +45,14 @@ car_data = {
     'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
 search_criteria = (2017, 1.6, 36000)
-found_cars = {key: value for key, value in car_data.items()
-              if (value[1] >= search_criteria[0])
-              & (value[2] >= search_criteria[1])
-              & (value[4] <= search_criteria[2])}
-result_dict = dict(sorted(found_cars.items(), key=lambda car: car[1][4]))
-i = 0
-print("Five first found elements: ")
-for key, value in result_dict.items():
-    if i < 5:
-        print(key, ": ", value)
-        i += 1
+
+filtered_sorted_cars = sorted(
+    ((key, value) for key, value in car_data.items()
+     if value[1] >= search_criteria[0]
+     and value[2] >= search_criteria[1]
+     and value[4] <= search_criteria[2]),
+    key=lambda car: car[1][4]
+)
+print("Five first found elements:")
+for key, value in filtered_sorted_cars[:5]:
+    print(f"{key}: {value}")
