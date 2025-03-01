@@ -23,11 +23,10 @@ print(avr_smal_list)
 print_task(3)
 
 big_set = set(big_list)
-print(
-    "Так в списку є дублiкати!"
-    if len(big_list) != len(big_set)
-    else "Список не мiстить дублiкатiв!"
-)
+if len(big_list) != len(big_set):
+    print("Так в списку є дублiкати!")
+else:
+    print("Список не мiстить дублiкатiв!")
 
 
 base_dict = {"contry": "Ukraine", "continent": "Europe", "size": 123}
@@ -58,8 +57,7 @@ print_task(5)
 
 new_dict = {}
 for key, value in base_dict.items():
-    key, value = value, key
-    new_dict[key] = value
+    new_dict[value] = key
 print(new_dict)
 
 # task 6. Об'єднайте два словника base_dict та add_dict  в новий словник sum_dict
