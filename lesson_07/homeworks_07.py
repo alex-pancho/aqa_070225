@@ -122,12 +122,16 @@ def get_squared_evens(list_of_numbers: list[int]) -> list[int]:
 
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-#print(get_squared_evens(numbers))  # [4, 16, 36, 64, 100]
+
+
+# print(get_squared_evens(numbers))  # [4, 16, 36, 64, 100]
 
 
 # task 8
-def filter_and_sort_cars(dict_of_cars: dict[str: tuple], search_criteria: list[int | float]) \
-        -> list[tuple[str, tuple]]:
+def filter_and_sort_cars(
+        dict_of_cars: dict[str: tuple],
+        search_criteria: list[int | float]
+) -> list[tuple[str, tuple]]:
     """
     Filters a dict of cars based on year, engine_volume and price.
     Sort a dict by price.
@@ -209,7 +213,9 @@ def title_words_count(text: str) -> int:
 
 
 text = "By the time Ben was fagged out, Tom had traded the next chance to Billy Fisher"
-#print(f"{title_words_count(text)} слів починаються з великої літери в тексті\n")
+
+
+# print(f"{title_words_count(text)} слів починаються з великої літери в тексті\n")
 
 
 # task 10
