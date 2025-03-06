@@ -40,6 +40,8 @@ def sum_of_two_numbers(a: int | float, b: int | float) -> int | float | str:
 """  Написати функцію, яка розрахує середнє арифметичне списку чисел.
 """
 def average_of_list(lst: list[int | float]) -> int | float | str:
+    if not lst:
+        return "Пустий список"
     if not all(isinstance(i, (int, float)) for i in lst):
         return "Потрібно ввести список чисел"
     return sum(lst) / len(lst)
