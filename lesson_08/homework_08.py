@@ -19,7 +19,7 @@ def sum_numbers_in_list(string_list: list):
     """Повертає список сум чисел зі списку строк,
     які складаються з чисел, розділених комою."""
     num_list = []
-    if not isinstance(string_list,list):
+    if not isinstance(string_list, list):
         raise ValueError("List is expected as input")
     if len(string_list) == 0:
         raise ValueError("List is empty")
