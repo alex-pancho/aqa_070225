@@ -13,7 +13,6 @@ sum_numbers_in_list([])  # ValueError
 sum_numbers_in_list("21")  # ValueError
 ```
 """
-from os.path import split
 
 
 def sum_numbers_in_list(string_list: list):
