@@ -9,7 +9,7 @@ def print_task(task_number):
 """
 print_task(1)
 
-alien_color = ["green", "yellow", "red"]
+alien_color = "green"
 if "green" in alien_color:
     print("Гравець щойно заробив 5 балів")
 
@@ -80,14 +80,15 @@ print(f"Доданi начинки: {', '.join(pizza_topping)}")
 """
 print_task(6)
 
-input_value = input("Введіть натуральне число:")
-sum_value = 0
-if not input_value.isdigit() or int(input_value) <= 0:
-    print("Ви ввели ненатуральне число!")
-else:
-    for v in input_value:
-        sum_value += int(v) 
-    print(f"Сума цифр {input_value}: {sum_value}")
+while True:
+    input_value = input("Введіть натуральне число: ").strip()
+
+    if input_value.isdigit() and int(input_value) > 0:
+        sum_value = sum(int(v) for v in input_value)
+        print(f"Сума цифр {input_value}: {sum_value}")
+        break 
+    else:
+        print("Помилка! Введіть натуральне число!")
 
 # task 7
 """  Потрібно написати програму, яка просить користувача ввести числа, доки він не введе 0.
