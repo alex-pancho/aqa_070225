@@ -23,12 +23,13 @@ class Student:
         print(f"Середній бал студента: {self.avarage_point}")
 
 
-# Створили об’єкт Тетяна
-tetiana = Student("Tetiana", "Lypnyk", 30, "90")
-# вивели інформацю про тетяну
-tetiana.student_info()
-print("________________")
-# підвищили Тетяні бал
-tetiana.change_avarege("100")
-# показали нову інформацію про Тетяну
-tetiana.student_info()
+if __name__ == "__main__":
+    # Створили об’єкт Тетяна
+    tetiana = Student("Tetiana", "Lypnyk", 30, "90")
+    # вивели інформацю про тетяну
+    tetiana.student_info()
+    print("________________")
+    # підвищили Тетяні бал
+    tetiana.change_avarege("100")
+    # показали нову інформацію про Тетяну
+    tetiana.student_info()
