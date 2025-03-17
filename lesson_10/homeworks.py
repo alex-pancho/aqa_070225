@@ -3,21 +3,22 @@
  Порахувати кількість унікальних символів в строці. Якщо їх більше 10 - вивести в консоль True, 
  інакше - False. Строку отримати за допомогою функції input()'''
  
-def count_unique_characters(str_for_count:str) -> bool:
+def count_unique_characters(str_for_count:str, expected_unique_chars:int) -> bool:
     """Functions count unique characters in string and:\n
-    - returns 'True' if string contains more than 10 unique characters;\n
-    - returns 'False' if string contains less than 10 unique characters.
+    - returns 'True' if string contains more than expected unique characters;\n
+    - returns 'False' if string contains less than expected unique characters.
     """
     if not isinstance (str_for_count, str):
         raise TypeError('Only \'str\' type is expected.')
-    set_for_count = set(str_for_count)
-    set_len = len(set_for_count)
+    if not isinstance (expected_unique_chars, int):
+        raise TypeError('Only \'int\' type is expected.')
+    set_len = len(set(str_for_count))
     if set_len == 0:
         raise ValueError('Empty string is entered.')
-    if set_len > 10:
-        return(True)
-    if set_len <= 10:
-        return(False)
+    if set_len > expected_unique_chars:
+        return True
+    if set_len <= expected_unique_chars:
+        return False
   
 """ Написати функцію, яка приймає два рядки та повертає індекс першого входження другого рядка
 у перший рядок, якщо другий рядок є підрядком першого рядка, та -1, якщо другий рядок
@@ -27,12 +28,10 @@ def find_substring(str1:str, str2:str) -> int:
     """ Function checks if str1 contains str2.\n 
     Returns index (position) of the first occurrence of str2 in str1.\n
     Returns '-1' if str1 does not contain str2."""
-    if not isinstance (str1, str):
-        raise TypeError('Only \'str\' type is for str1.')
-    if not isinstance (str2, str):
-        raise TypeError('Only \'str\' type is for str2.')
-    if len(str1) < len(str2):
-        raise ValueError('str1 is expected to be longer than str2.')
+    if not isinstance (str1, str) or not isinstance (str2, str):
+        raise TypeError('Only \'str\' type is supported for both values.')
+    if len(str2) == 0:
+        raise ValueError('str2 is empty.')
     if str2 in str1:
         return(str1.index(str2))
     else:
@@ -52,9 +51,11 @@ if __name__ == "__main__":
 
 # Func 1
 
+    expected_unique_chars = 10
+
     str_for_count = 'qwerrrrrrrrttttttyyyyyyy'
  
-    print(f'Func 1: String contains more than 10 unique characters? Response: {count_unique_characters(str_for_count)}')
+    print(f'Func 1: String contains more than 10 unique characters? Response: {count_unique_characters(str_for_count, expected_unique_chars)}')
 
 # Func 2
 
