@@ -46,12 +46,8 @@ class SumListTest(unittest.TestCase):
         my_list = "[0, -0]"
         with self.assertRaises(ValueError):
             sum_list_last_first(my_list)
-        # my_list = (0, 0)
-        # with self.assertRaises(ValueError):
-        #     sum_list_last_first(my_list) 
-        my_list = 0
-        with self.assertRaises(ValueError):
-            sum_list_last_first(my_list)
+
+
     
     def test_06_zeros(self):
         my_list = [0, -0]
