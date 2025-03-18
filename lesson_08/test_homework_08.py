@@ -42,12 +42,15 @@ class TestSumNumbersInList(unittest.TestCase):
 
     def test_04_empty_list(self):
         """ Тест на порожній список """
-        self.assertEqual(sum_numbers_in_list([]), "ValueError")
+        with self.assertRaises(ValueError):
+            sum_numbers_in_list([])
 
     def test_05_non_list_input(self):
         """ Тест на некоректний тип вхідних даних """
-        self.assertEqual(sum_numbers_in_list("21"), "ValueError")
-        self.assertEqual(sum_numbers_in_list(3), "ValueError")
+        with self.assertRaises(ValueError):
+            sum_numbers_in_list("21")
+        with self.assertRaises(ValueError):
+            sum_numbers_in_list(3)
 
     def test_06_mixed_valid_invalid(self):
         """ Тест на суміш коректних і некоректних даних """
