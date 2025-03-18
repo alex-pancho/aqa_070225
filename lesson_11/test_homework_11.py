@@ -8,7 +8,7 @@ class TestLogEvent(unittest.TestCase):
 
     def check_last_line(self, text):
         try:
-            with open(self.file_path, 'r') as file:
+            with open(self.file_path, "r") as file:
                 lines = file.readlines()
                 if lines and text in lines[-1]:
                     return True
