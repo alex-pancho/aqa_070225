@@ -1,29 +1,37 @@
-def sum_numbers_in_list(string_list: list):
-    """Повертає список сум чисел зі списку строк,
-    які складаються з чисел, розділених комою."""
-    if not isinstance(string_list, list):
-        raise ValueError("Не можна виконати операцію.")
-    if not string_list:
-        raise ValueError("Список порожній! Не можна виконати операцію.")
-    result = []
-    for item in string_list:
-        try:
-            pass
-            numbers = item.split(",")
-            numbers = [int(num) for num in numbers]  
-            result.append(sum(numbers))
-        except ValueError as e:
-            result.append("Не можу це зробити!")
-
-        except AttributeError as e:
-            result.append("Не можу це зробити! AttributeError")
-    return result
+def average(numbers):
+    """Функція знаходить середнє арифметичне у списку чисел."""
+    if len(numbers) == 0:
+        raise ValueError("Список порожній")
+    suma = 0
+    for n in numbers:
+        if type(n) != int and type(n) != float:
+            raise ValueError("Не всі елементи є числами")
+        suma += n
+    return suma / len(numbers)
 
 
-def reverse(task_4):
-    """Повертає, значення в риверсивонму порядку"""
-    return task_4[::-1]
+def longest_word(words):
+    """Функція повертає найдовше слово у списку слів."""
+    if len(words) == 0:
+        raise ValueError("Список порожній")
+    max_word = ""
+    for word in words:
+        if type(word) != str:
+            raise ValueError("Не всі елементи є рядками")
+        if len(word) > len(max_word):
+            max_word = word
+    return max_word
 
-def add_numbers(a, b):
-    """Додає два значення"""
-    return a + b    
+
+def find_substring(str1, str2):
+    """Функція шукає підрядок у рядку і повертає індекс першого входження."""
+    if type(str1) != str or type(str2) != str:
+        raise ValueError("Обидва параметри мають бути рядками")
+    if type(str1) != str or type(str2) != str:
+        raise TypeError ("Один із параметрів не рядок")
+    index = -1
+    for i in range(len(str1) - len(str2) + 1):
+        if str1[i:i + len(str2)] == str2:
+            index = i
+            break
+    return index
