@@ -5,6 +5,7 @@
 """
 
 import logging
+import unittest
 
 def log_event(username: str, status: str):
     """
