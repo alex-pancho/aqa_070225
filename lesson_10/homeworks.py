@@ -82,20 +82,40 @@ def average_of_list(list_of_numbers:list):
         result = total_sum / count
     return result
 
+def longest_word (list_of_words):
+    "Повертає перше найдовше слово у списку"
 
+    #перевіряємо чи заданий список
+    if not isinstance(list_of_words, list):
+        raise ValueError("List is expected")
+    
+    #перевіряємо чи список не порожній
+    if len(list_of_words) == 0:
+        raise ValueError("List is empty")
+    
+    # формуємо новий список з тільки стрінгових елементів, щоб виключити не стрінгових елементів списку
+    list_of_words_str  = []
+    for element in list_of_words:
+        if isinstance(element, str):
+            list_of_words_str.append(element)
+    
+    #перевіряємо чи стрінговий список не порожній
+    if len(list_of_words_str) == 0:
+        raise ValueError("There are no string elements in list")
 
-        
+    #перевіряємо чи є в списку стрінга >=1 символ
+    word_present = False
+    for element in list_of_words_str:
+            if len(element)>=1:
+                word_present = True
+    if word_present == False:
+        raise ValueError("There are no words")
+    
+    #Позначаємо перший елемент стрінгового списку як найдовше слово
+    long_word = list_of_words_str[0]
 
-
-
-
-
-
-
-        
-
-        
-
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
-    #print(average_of_list([0, "0", 0]))
+    #Шукаємо найдовше слово
+    for word in list_of_words_str:
+        if len(word)> len(long_word):
+            long_word = word
+    return long_word

@@ -10,6 +10,7 @@
 from homeworks import sum_numbers_in_list
 from homeworks import Student
 from homeworks import average_of_list
+from homeworks import longest_word
 import unittest
 
 class SumNumbersInList(unittest.TestCase):
@@ -116,6 +117,47 @@ class AvarageOfList(unittest.TestCase):
         with self.assertRaises(ValueError):
             average_of_list(my_list)
 
+class LongestWord(unittest.TestCase):
+
+    def test_1_valid_input(self):
+        #перевіряє чи повертається перше найдовше слово у списку з валідними даними
+       list_of_words = ["test","testLong", "testLongest", "test" ]
+       actual = longest_word (list_of_words)
+       self.assertEqual(actual, "testLongest")
+
+    def test_2_valid_input_with_other_types(self):
+        #перевіряє чи повертається перше найдовше слово у списку з валідними даними та даними іншого типу
+        list_of_words = ["test", 2, "testLong", ["veryLongWord"], "testLongest", "test"]
+        actual = longest_word(list_of_words)
+        excepted = "testLongest"
+        self.assertEqual(actual, excepted)
+
+    def test_3_only_empty_string_in_list(self):
+        #перевіряємо випадок коли в списку тільки порожні рядки
+        list_of_words = ["", 2, "", ["veryLongWord"]]
+        with self.assertRaises(ValueError) as context:
+            longest_word(list_of_words)
+            self.assertEqual(str(context.exception), "There are no words")
+
+    def test_4_no_string_in_list(self):
+        #перевіряємо випадок коли в списку немає рядка
+        list_of_words = [1, 2, ["veryLongWord"]]
+        with self.assertRaises(ValueError) as context:
+            longest_word(list_of_words)
+            self.assertEqual(str(context.exception), "There are no string elements in list")
+
+    def test_5_empty_list(self):
+        #перевіряємо випадок коли список порожній
+        list_of_words = []
+        with self.assertRaises(ValueError) as context:
+            longest_word(list_of_words)
+            self.assertEqual(str(context.exception), "List is empty")
+
+    def test_6_not_a_list(self):
+        #перевіряємо випадок коли передано не список
+        list_of_words = []
+        with self.assertRaises(ValueError):
+            longest_word(list_of_words)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
