@@ -42,7 +42,7 @@ class LogEventTest(unittest.TestCase):
         self.assertEqual(actual, expected, msg = "Message is NOT logged on 'error' level.")
 
     def test_04_log_event(self):
-        """Check if ValueError is raised for any other status that differs from 'success', 'expired', 'failed'."""
+        """Check if message is not logged for any other status that differs from 'success', 'expired', 'failed'."""
         username = "ilazurkevych"
         status = "debug"
         log_event(username, status)
