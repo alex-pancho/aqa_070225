@@ -6,6 +6,7 @@
 
 import logging
 
+
 def log_event(username: str, status: str):
     """
     Логує подію входу в систему.
@@ -24,8 +25,8 @@ def log_event(username: str, status: str):
     logging.basicConfig(
         filename='login_system.log',
         level=logging.INFO,
-        format='%(asctime)s - %(message)s'
-        )
+        format='%(asctime)s - %(message)s',
+    )
     logger = logging.getLogger("log_event")
 
     # Логування події
@@ -35,3 +36,4 @@ def log_event(username: str, status: str):
         logger.warning(log_message)
     else:
         logger.error(log_message)
+
