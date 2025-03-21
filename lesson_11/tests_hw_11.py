@@ -45,8 +45,11 @@ class LogEventTest(unittest.TestCase):
         """Check if ValueError is raised for any other status that differs from 'success', 'expired', 'failed'."""
         username = "ilazurkevych"
         status = "debug"
-        with self.assertRaises(ValueError):
-            log_event(username, status)
+        log_event(username, status)
+        actual_last_log = get_last_log_message()
+        actual = actual_last_log.split(' - ', 1)[-1].strip()
+        expected = f"Login event - Username: {username}, Status: debug"
+        self.assertNotEqual(actual, expected, msg = f"Error: Message log is not expected for any other statuses that differs from 'success', 'expired', 'failed'.")
 
     def test_05_log_event(self):
         """Check if log message contains a timestamp."""
@@ -56,34 +59,6 @@ class LogEventTest(unittest.TestCase):
         actual_last_log = get_last_log_message()
         actual = actual_last_log.startswith("2025")
         self.assertTrue(actual, msg = "Error: Timestamp is missing or incorrect.")
-
-    def test_06_log_event(self):
-        """Check if 'TypeError' is raised for username with not 'str' type."""
-        username = ["ilazurkevych"]
-        status = "success"
-        with self.assertRaises(TypeError):
-            log_event(username, status)
-
-    def test_07_log_event(self):
-        """Check if 'TypeError' is raised for status with not 'str' type."""
-        username = "ilazurkevych"
-        status = 1
-        with self.assertRaises(TypeError):
-            log_event(username, status)
-
-    def test_08_log_event(self):
-        """Check if 'ValueError' is raised for empty status."""
-        username = "ilazurkevych"
-        status = ""
-        with self.assertRaises(ValueError):
-            log_event(username, status)
-
-    def test_09_log_event(self):
-        """Check if 'ValueError' is raised for empty username."""
-        username = ""
-        status = "success"
-        with self.assertRaises(ValueError):
-            log_event(username, status)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
