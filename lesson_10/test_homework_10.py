@@ -34,7 +34,6 @@ class TestHomeworkFunctions(unittest.TestCase):
         with self.assertRaises(TypeError):
             add_numbers("3", 2)  
 
-
     def test_new_average_1(self):
         """Tests for the new_average function."""
         actual = new_average([1, 2, 3, 4, 5])
@@ -55,7 +54,6 @@ class TestHomeworkFunctions(unittest.TestCase):
         with self.assertRaises(ValueError):
             new_average([])        
 
-
     def test_reverse_string_1(self):
         """Tests for the reverse_string function."""
         actual = reverse_string("hello")
@@ -64,23 +62,17 @@ class TestHomeworkFunctions(unittest.TestCase):
    
     def test_reverse_string_2(self):
         actual = reverse_string("Python")
-        expected = True  
-        self.assertTrue(actual == "nohtyP", f"Expected {expected}, but got {actual}")
+        expected = "nohtyP"
+        self.assertEqual(actual, expected, f"Expected {expected}, but got {actual}")
 
     def test_reverse_string_3(self):
-        actual = reverse_string("Python")
-        expected = False 
-        self.assertFalse(actual == "Python", f"Expected {expected}, but got {actual}")
-
-    def test_reverse_string_4(self):
         actual = reverse_string("")
         expected = ""
         self.assertEqual(actual, expected, f"Expected {expected}, but got {actual}")
         
-    def test_reverse_string_5(self):
+    def test_reverse_string_4(self):
         with self.assertRaises(TypeError):
             reverse_string(123)
-
 
     def test_long_word_1(self):
         actual = long_word(["Apple", "Banana", "Orange", "Pineapple"])
@@ -95,7 +87,6 @@ class TestHomeworkFunctions(unittest.TestCase):
     def test_long_word_3(self):
         with self.assertRaises(ValueError):
             long_word([])  
-
 
     def test_find_substring(self):
         """Tests for the find_substring function."""
