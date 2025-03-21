@@ -50,4 +50,3 @@ if __name__ == "__main__":
     print(multiplication_table(1, 4))
     multiplication_table(0,0)
     print(list_sum(["1", "2"]))
-    
