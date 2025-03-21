@@ -7,7 +7,6 @@ def add_numbers(a, b):
     return a + b
 
 
-
 # task 2
 """  Функція, яка розрахує середнє арифметичне списку чисел.
 """
@@ -15,6 +14,7 @@ def new_average(small_list):
     if len (small_list) == 0:
       raise ValueError("Error: List is empty")
     return sum(small_list) / len(small_list)
+
 
 # task 3
 """  Функція, яка приймає рядок та повертає його у зворотному порядку.
@@ -25,7 +25,6 @@ def reverse_string(text):
     return text [::-1]
 
 
-
 # task 4
 """  Функція, яка приймає список слів та повертає найдовше слово у списку.
 """
@@ -33,7 +32,6 @@ def long_word(words):
     if not words:
        raise ValueError("List is empty")
     return max(words, key=len)
-
 
 
 # task 5
