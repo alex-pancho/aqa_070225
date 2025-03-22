@@ -25,18 +25,18 @@ def check_passanger(passengers):
     has_one_item_less_25 = False
     total_items = sum(p['number_of_items'] for p in passengers)
     avg_items = total_items / len(passengers)
-    count_above_avg = 0 
-    
+    count_above_avg = 0
+
     for p in passengers:
         log.debug(f"Processing number_of_items:{p["number_of_items"]}, total_weight {p["total_weight"]}")
         if p['number_of_items'] > avg_items:
             log.info(f"More then avg items here: {p['number_of_items']}")
             count_above_avg += 1
-    
+
     for p in passengers:
         if p['number_of_items'] > 2:
             count_more_then_two_items += 1
-            
+
         if p['number_of_items'] == 1 and p['total_weight'] < 25:
             has_one_item_less_25 = True
     return count_more_then_two_items, has_one_item_less_25, count_above_avg

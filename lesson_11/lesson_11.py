@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(
     filename="example.log",
     encoding="utf8",
-    level=logging.DEBUG, 
+    level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s',
 )
 
