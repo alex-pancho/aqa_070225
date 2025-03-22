@@ -6,6 +6,7 @@
 
 import logging
 
+
 def log_event(username: str, status: str):
     """
     Логує подію входу в систему.
