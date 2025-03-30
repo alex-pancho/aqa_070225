@@ -171,3 +171,8 @@ cython_debug/
 .pypirc
 
 .DS_Store
+
+# Ігноруємо папки work_with_csv, work_with_json та work_with_xml
+lesson_13/work_with_csv/
+lesson_13/work_with_json/
+lesson_13/work_with_xml/
