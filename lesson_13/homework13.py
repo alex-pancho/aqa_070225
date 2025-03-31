@@ -4,6 +4,31 @@ import logging
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+def create_logger(log_filename: str = None, log_level=logging.INFO):
+    """Creates and returns a logger with specified log level and optional file handler."""
+    # Створення логера
+    logger = logging.getLogger(__name__)
+    # Налаштування рівня логування
+    logger.setLevel(log_level)
+
+    # Якщо є файл, логуємо у файл 
+    if log_filename:
+        file_handler = logging.FileHandler(log_filename)
+        file_handler.setLevel(logging.ERROR)
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+
+    # немає файлу, виводимо в консоль
+    if not log_filename:
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO) 
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        console_handler.setFormatter(formatter)
+        logger.addHandler(console_handler)
+
+    return logger
+
 """Завдання 1:
 Візміть два файли з теки ideas_for_test/work_with_csv порівняйте на наявність дублікатів і приберіть їх. 
 Результат запишіть у файл result_<your_second_name>.csv"""
@@ -33,20 +58,7 @@ Pезультат для невалідного файлу виведіть че
 def validate_json(folderpath: Path) -> None:
     """Function validates all JSON files in the specified folder to check if they are valid JSON.\n
     If the file contains invalid JSON, an error message is logged."""
-
-    # Створення логера
-    logger = logging.getLogger(__name__)
-    # Налаштування рівня логування
-    logger.setLevel(logging.ERROR)
-    # Створення обробника для запису в файл
-    file_handler = logging.FileHandler('json_lazurkevych.log')
-    # Налаштування рівня логування для обробника
-    file_handler.setLevel(logging.ERROR)
-    # Створення форматера для обробника
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    file_handler.setFormatter(formatter)
-    # Додавання обробника до логера
-    logger.addHandler(file_handler)
+    logger = create_logger(log_filename='json_lazurkevych.log', log_level=logging.ERROR)
 
     for filepath in folderpath.iterdir():
         if filepath.is_file() and filepath.suffix == '.json':
@@ -63,20 +75,7 @@ def validate_json(folderpath: Path) -> None:
 
 def find_incoming_by_number(filepath: Path, search_number: int) -> None:
     """Searches for a group by its number in an XML file and logs the value of the 'timingExbytes/incoming' to console."""
-
-    # Створення логера
-    logger = logging.getLogger(__name__)
-    # # Налаштування рівня логування
-    logger.setLevel(logging.INFO)
-    # # Створення обробника для виводу в stdout
-    console_handler = logging.StreamHandler()
-    # # Налаштування рівня логування для обробника
-    console_handler.setLevel(logging.INFO)
-    # # Створення форматера для обробника
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    console_handler.setFormatter(formatter)
-    # # Додавання обробника до логера
-    logger.addHandler(console_handler)
+    logger = create_logger(log_level=logging.INFO)
 
     tree = ET.parse(filepath)
     root = tree.getroot()
