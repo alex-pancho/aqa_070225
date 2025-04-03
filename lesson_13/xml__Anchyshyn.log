@@ -1,0 +1,10 @@
+2025-04-04 01:25:23,349 - INFO - Group 1 found, but no incoming timingExbytes
+2025-04-04 01:25:23,349 - INFO - Group 2: Incoming timingExbytes = 0xACDC
+2025-04-04 01:25:23,349 - INFO - Group 3 not found in XML
+2025-04-04 01:25:23,349 - INFO - Group 4: Incoming timingExbytes = 0x2000
+2025-04-04 01:25:23,349 - INFO - Group 5: Incoming timingExbytes = 0x6666
+2025-04-04 01:30:29,075 - INFO - Group 1 found, but no incoming timingExbytes
+2025-04-04 01:30:29,076 - INFO - Group 2: Incoming timingExbytes = 0xACDC
+2025-04-04 01:30:29,076 - INFO - Group 3 not found in XML
+2025-04-04 01:30:29,076 - INFO - Group 4: Incoming timingExbytes = 0x2000
+2025-04-04 01:30:29,076 - INFO - Group 5: Incoming timingExbytes = 0x6666
