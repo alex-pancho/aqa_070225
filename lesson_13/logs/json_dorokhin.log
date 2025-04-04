@@ -1,0 +1,2 @@
+2025-04-04 20:02:07,874 - ERROR - JSONDecodeError у файлі C:\Users\qdbp\Documents\Study\aqa_070225\lesson_13\login.json: Expecting ',' delimiter: line 8 column 1 (char 324)
+2025-04-04 20:02:07,874 - ERROR - Файл невалідний: C:\Users\qdbp\Documents\Study\aqa_070225\lesson_13\login.json
