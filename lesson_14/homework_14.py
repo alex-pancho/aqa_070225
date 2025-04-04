@@ -28,7 +28,7 @@ class Rhombus:
     @side_a.setter
     def side_a(self, value):
         if value <= 0:
-            raise ValueError("Значення сторони сторона_а повинно бути більше 0.")
+            raise ValueError("Значення сторони сторона_а повинно бути більше 0")
         self._side_a = value
 
     @property
@@ -47,9 +47,36 @@ class Rhombus:
         return 180 - self._angle_a
 
     def __repr__(self):
-        return f"Ромб: (сторона_а={self.side_a}, кут_a={self.angle_a}, кут_б={self.angle_b})"
+        return f"Ромб: сторона_а={self.side_a}, кут_a={self.angle_a}, кут_б={self.angle_b}"
+
+class Rhombus2:
+
+    def __init__(self, side_a, angle_a):
+        self.side_a = side_a
+        self.angle_a = angle_a  # angle_b буде встановлено автоматично
+
+    def __setattr__(self, name, value):
+        if name == "side_a":
+            if value <= 0:
+                raise ValueError("Значення сторони сторона_а повинно бути більше 0")
+            super().__setattr__(name, value)
+        elif name == "angle_a":
+            if not (0 < value < 180):
+                raise ValueError("Кут повинен бути в межах від 0 до 180 градусів і кути повинні задовольняти умову: "
+                                 "кут_а"
+                             "+ кут_б = 180")
+            super().__setattr__(name, value)
+            super().__setattr__("angle_b", 180 - value)
+        else:
+            super().__setattr__(name, value)
+
+    def __repr__(self):
+        return f"Ромб2: сторона_а={self.side_a}, кут_а={self.angle_a}, кут_б={self.angle_b}"
 
 
 if __name__ == "__main__":
-    romb = Rhombus(side_a=22, angle_a=22)
-    print(romb)
+    romb1 = Rhombus(22, 23)
+    print(romb1)
+    romb2 = Rhombus2(22, 23)
+    print(romb2)
+
