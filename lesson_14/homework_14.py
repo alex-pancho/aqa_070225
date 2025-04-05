@@ -15,6 +15,7 @@
 """
 
 class Romb:
+
     """
 This code validates and sets the value of angle_a.
 It first checks whether the input value is within the valid range (0 to 180).
@@ -24,6 +25,7 @@ Then, it automatically calculates the adjacent angle (angle_b)
 as 180 minus angle_a, and sets it as well.
 This ensures that the sum of two adjacent angles in a rhombus
 is always 180 degrees.
+
     """
 
     def __init__(self, side_length, angle_a):
@@ -50,13 +52,10 @@ is always 180 degrees.
 
     def __repr__(self):
         return f"Romb(side_length={self.side_length}, angle_a={self.angle_a}, angle_b={self.angle_b})"
-
+    
 if __name__ == "__main__":
     my_romb = Romb(12, 75)
     print(my_romb)
 
     another_romb = Romb(9.5, 65)
     print(another_romb)
- 
-
-        
