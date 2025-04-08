@@ -16,66 +16,57 @@
 
 
 class Rhombus:
-    def __init__(self, side_a: int = None, angle_a: int = None, angle_b: int = None):
-        self.__side_a = side_a
-        self.__angle_a = angle_a
-        self.__angle_b = angle_b
+    def __init__(self, side_a=None, angle_a=None):
+        self.side_a = side_a
+        self.angle_a = angle_a
+        # angle_b буде розраховано автоматично
 
-    @property
-    def side_a(self):
-        return self.__side_a
+    def __setattr__(self, name, value):
+        if name == "side_a":
+            if value is not None:
+                if not isinstance(value, (int, float)):
+                    raise ValueError("Side must be a number")
+                if value <= 0:
+                    raise ValueError("Side must be greater than 0")
 
-    @side_a.setter
-    def side_a(self, side_a: int):
-        if not isinstance(side_a, int):
-            raise ValueError(f"Side must be int, your side type: {type(side_a)}")
-        if side_a > 0:
-            self.__side_a = side_a
-        else:
-            raise ValueError(f"Side can't be 0 or shorter, your side: {side_a}")
+        elif name == "angle_a":
+            if value is not None:
+                if not isinstance(value, (int, float)):
+                    raise ValueError("Angle must be a number")
+                if not (0 < value < 180):
+                    raise ValueError("angle_a must be in range 1–179 degrees")
+                super().__setattr__("angle_b", 180 - value)
 
-    @property
-    def angle_a(self):
-        return self.__angle_a
+        elif name == "angle_b":
+            if value is not None:
+                if not isinstance(value, (int, float)):
+                    raise ValueError("Angle must be a number")
+                if not (0 < value < 180):
+                    raise ValueError("angle_b must be in range 1–179 degrees")
+                super().__setattr__("angle_a", 180 - value)
 
-    @angle_a.setter
-    def angle_a(self, angle_a: int):
-        if not isinstance(angle_a, int):
-            raise ValueError(f"Angle must be int, your side type: {type(angle_a)}")
-        if 0 < angle_a < 180:
-            self.__angle_a = angle_a
-            self.__angle_b = 180 - angle_a
-        else:
-            raise ValueError(f"Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: {angle_a}")
+        super().__setattr__(name, value)
 
-    @property
-    def angle_b(self):
-        return self.__angle_b
-
-    @angle_b.setter
-    def angle_b(self, angle_b: int):
-        if not isinstance(angle_b, int):
-            raise ValueError(f"Angle must be int, your side type: {type(angle_b)}")
-        if 0 < angle_b < 180:
-            self.__angle_a = 180 - angle_b
-            self.__angle_b = angle_b
-        else:
-            raise ValueError(f"Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: {angle_b}")
+    def __str__(self):
+        return f"Rhombus: side = {self.side_a}, angle A = {self.angle_a}, angle B = {self.angle_b}"
 
 
 if __name__ == "__main__":
-    rhombus = Rhombus()
+    rhombus = Rhombus(10, 60)
     # rhombus.side_a=0 #Side can't be 0 or shorter, your side: 0
     # rhombus.side_a="str" #ValueError: Side must be int, your side type: <class 'str'>
     rhombus.side_a = 1
-    print(f"side_a = {rhombus.side_a}")
+    print(rhombus)
     # rhombus.angle_a = 0 #ValueError: Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: 0
     # rhombus.angle_a = 180 #ValueError: Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: 180
     # rhombus.angle_a="Hello" #ValueError: Angle must be int, your side type: <class 'str'>
-    rhombus.angle_a = 1
-    print(f"angle_a = {rhombus.angle_a}, angle_b = {rhombus.angle_b}")
+    rhombus.angle_a = 100
+    print(rhombus)
     # rhombus.angle_b = 0 # ValueError: Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: 0
     # rhombus.angle_b = 180 # ValueError: Angle can't be 180 degrees or bigger, and 0 or lower degrees your angle: 180
     # rhombus.angle_a="Hello" #ValueError: Angle must be int, your side type: <class 'str'>
-    rhombus.angle_b = 30
-    print(f"angle_a = {rhombus.angle_a}, angle_b = {rhombus.angle_b}")
+    rhombus.__setattr__( "angle_a", 10)
+    print(rhombus)
+    setattr(rhombus, "angle_a", 20)
+    print(rhombus)
+    
