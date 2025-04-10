@@ -2,9 +2,9 @@ import unittest
 from homework_11 import log_event
 
 username = "DorVit"
-status_1 = "successs"
-status_2 = "failed"
-status_3 = "expired"
+success = "success"
+failed = "failed"
+expired = "expired"
 
 
 class TestLogEvent(unittest.TestCase):
@@ -20,40 +20,40 @@ class TestLogEvent(unittest.TestCase):
         """
         Тест перевіряє успішний логін та логується на рівні інфо
         """
-        log_event(username, status_1)
+        log_event(username, success)
         last_log = self.read_log()
-        self.assertIn(f"Username: {username}, Status: {status_1}", last_log)
+        self.assertIn(f"Username: {username}, Status: {success}", last_log)
 
     def test_2_failed(self):
         """
         Тест перевіряє логін з невірним паролем та логується на рівні error
         """
-        log_event(username, status_2)
+        log_event(username, failed)
         last_log = self.read_log()
-        self.assertIn(f"Username: {username}, Status: {status_2}", last_log)
+        self.assertIn(f"Username: {username}, Status: {failed}", last_log)
 
     def test_3_expired(self):
         """
         Тест перевіряє логін з застарілим паролем та логується на рівні warning
         """
-        log_event(username, status_3)
+        log_event(username, expired)
         last_log = self.read_log()
-        self.assertIn(f"Username: {username}, Status: {status_3}", last_log)
+        self.assertIn(f"Username: {username}, Status: {expired}", last_log)
 
     def test_4_different_users(self):
         """
         Тест перевіряє логін з застарілим паролем одразу пысля успішного логіну та логується на рівні warning
         """
-        log_event(username, status_1)
-        log_event("user456", status_2)
+        log_event(username, success)
+        log_event("user456", failed)
         last_log = self.read_log()
-        self.assertIn(f"Username: user456, Status: {status_2}", last_log)
+        self.assertIn(f"Username: user456, Status: {failed}", last_log)
 
     def test_5_empty_username(self):
         """
         Тест перевіряє логін з порожнім ім'ям користувача.
         """
-        log_event("", status_2)
+        log_event("", failed)
         last_log = self.read_log()
         self.assertIn("Username: , Status: failed", last_log)
 
