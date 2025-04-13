@@ -20,20 +20,21 @@ TeamLead
 
 
 class Employee:
-    def __init__(self, name: str, salary: float):
+    def __init__(self, name: str, salary: float, **kwargs):
+        super().__init__(**kwargs)
         self.name = name
         self.salary = salary
 
 
 class Manager(Employee):
-    def __init__(self, name: str, salary: float, department: str):
-        super().__init__(name, salary)
+    def __init__(self, department: str, **kwargs):
+        super().__init__(**kwargs)
         self.department = department
 
 
 class Developer(Employee):
-    def __init__(self, name: str, salary: float, programming_language: str):
-        super().__init__(name, salary)
+    def __init__(self, programming_language: str, **kwargs):
+        super().__init__(**kwargs)
         self.programming_language = programming_language
 
 
@@ -46,8 +47,12 @@ class TeamLead(Manager, Developer):
         programming_language: str,
         team_size: int,
     ):
-        Manager.__init__(self, name, salary, department)
-        Developer.__init__(self, name, salary, programming_language)
+        super().__init__(
+            name=name,
+            salary=salary,
+            department=department,
+            programming_language=programming_language,
+        )
         self.team_size = team_size
 
 
@@ -124,10 +129,15 @@ class Triangle(Shape):
         return self.__a + self.__b + self.__c
 
 
-shapes = [Circle(5), Rectangle(4, 6), Triangle(3, 4, 5)]
+if __name__ == "__main__":
+    # Test for TeamLead
+    test_team_lead()
 
-for shape in shapes:
-    print(f"Shape: {type(shape).__name__}")
-    print(f"Area: {shape.area():.2f}")
-    print(f"Perimeter: {shape.perimeter():.2f}")
-    print()
+    # Test for Shape classes
+    shapes = [Circle(5), Rectangle(4, 6), Triangle(3, 4, 5)]
+
+    for shape in shapes:
+        print(f"Shape: {type(shape).__name__}")
+        print(f"Area: {shape.area():.2f}")
+        print(f"Perimeter: {shape.perimeter():.2f}")
+        print()
