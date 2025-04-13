@@ -1,3 +1,18 @@
+# Игнорируем JSON файлы локализаций
+localizations_en.json
+localizations_ru.json
+login.json
+swagger.json
+
+
+# Игнорируем CSV файлы
+random-michaels.csv
+random.csv
+
+# Игнорируем XML файл групп
+groups.xml
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -56,7 +71,7 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
+# log*.
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
