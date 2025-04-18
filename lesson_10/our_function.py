@@ -16,6 +16,14 @@ def sum_list_last_first(arr:list):
         result = sum(arr) / (arr[0] + arr[-1])
     return result
 
+correct_password = "1234"
+user_input = ""
+
+while user_input != correct_password:
+    user_input = input("Введіть пароль: ")
+    if user_input != correct_password:
+        print("Неправильно, спробуйте ще")
+print("Доступ дозволено!")
 
 if __name__ == "__main__":
     my_list = [1, 3, 7]
