@@ -5,7 +5,7 @@ def print_lyrics():
 
 print_lyrics()
 
-def say_hello(name:str="Anonymus", greeting:str="Hello") -> str:
+def say_hello(name:str="Anonymus", greeting: str="Hello") -> str:
     """Its greeting func
 
     :param name: Name for geeting
@@ -35,7 +35,7 @@ print_kwargs(name="John", age=25, city="New York")
 def print_args_and_kwargs(*args, **kwargs):
     for arg in args:
         print(arg)
-    
+
     for key, value in kwargs.items():
         print(f"{key}: {value}")
 
