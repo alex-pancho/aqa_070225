@@ -24,7 +24,6 @@ def get_data_in_json(url, params):
        
     except HTTPError as e:
         print('HTTP Помилка:', e)
-    
     except ConnectionError as e:
         print('Помилка з\'єднання:', e)
     except Timeout as e:
@@ -52,37 +51,74 @@ def get_data_in_json(url, params):
     ]
 }"""
 
-def save_pic(json_data):
-    
-    directory = Path(r'C:\Users\dmytr\OneDrive\Desktop\LYUBA\Hillel\aqa_070225\lesson_18\Mars photos')
-    if directory.exists():
+   
+def directory():
+    #визначаємо папку куди зберігати фото, якщо не існує то створємо папку
+    #!!! Не використувати абсолютні шляхи directory = Path(r'C:\Users\dmytr\OneDrive\Desktop\LYUBA\Hillel\aqa_070225\lesson_18\Mars photos')
+    #directory = Path.home()/"Mars photos"  #домашня папка C:\Users\dmytr\Mars photos
+    my_directory = Path(__file__).parent/"Mars photos"
+    if my_directory.exists():
         pass
     else:
-        directory.mkdir()
-    
-    pic_number = 1
+        my_directory.mkdir()
+    return my_directory
+
+def check_number_of_pic(url, params):
+    #підраховує кількість картинок за заданими параметрами
+    data = get_data_in_json(url, params)
     try:
-        if json_data["photos"]:
-            for photo in json_data['photos']:
-                link = photo['img_src']
-                response = requests.get(link)
-                with open(directory / f"mars_photo{pic_number}.jpg", 'wb') as file:
-                    file.write(response.content)
-                print(f"Picture mars_photo{pic_number}.jpg is downloaded")
-                pic_number+=1
-                print(f"Picture link {link}")
-        else:
-            print("No pictures found")
-
-    except TypeError as e:
-        print(f"Type error occured: {e}")
+        count = len(data["photos"])
+        return count
     except Exception as e:
-        print(f"Error occured: {e}")
+        print(f"Сталася помилка: {e}")
+        return 0
 
+def verify_if_download_all(pic_count):
+    # уточнює в юзера чи завантажувати картинки якщо їх більше 5, якщо картинок менще 5 автоматично їх завантажуємо
+    if pic_count<=5:
+        print(f"{pic_count} pictures will be downloaded")
+        return True
+    else:
+        user_decision = input(f" Do you want to download {pic_count} pictures? enter Y or N?")
+        while True:
+            if user_decision.upper() == "Y":
+                return True
+            elif user_decision.upper() == "N":
+                print("Download canceled ")
+                return False
+            else: 
+                user_decision = input(f" Do you want to download {pic_count} pictures? Y/N?")
 
+def get_links(url, params):
+    # шукаємо список посилань на картинки
+    json_data = get_data_in_json(url, params)
+    links = []
+    for photo in json_data['photos']:
+        links.append(photo['img_src'])
+    return links
+   
+def save_pic(url, params):
+    #функція зберігає картинки    
+    pic_number = 1
+    pic_count = check_number_of_pic(url, params)
+    if pic_count<1:
+        print("No pictures found")
+    else:
+        save_user_decision = verify_if_download_all(pic_count)
+        if save_user_decision:
+            links = get_links(url, params)
+            for link in links:
+                response = requests.get(link)
+                with open(directory() / f"mars_photo{pic_number}.jpg", 'wb') as file:
+                    file.write(response.content)
+                    print(f"Picture mars_photo{pic_number}.jpg is downloaded")
+                    pic_number+=1
+                    print(f"Picture link {link}")
+
+   
 if __name__ == "__main__":
     url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos'
-    params = {'sol': 1000, 'camera': 'fhaz', 'api_key': 'DEMO_KEY'}
-    json_data_test = get_data_in_json(url, params)
-    #print(json_data_test)
-    save_pic(json_data_test)
+    params = {'sol': 1001, 'camera': 'fhaz', 'api_key': 'DEMO_KEY'}
+   # params = {'sol': 1001, 'api_key': 'DEMO_KEY'}
+   
+    save_pic(url, params)
