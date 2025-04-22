@@ -6,10 +6,6 @@
 import requests
 from pathlib import Path
 
-# Основні параметри
-url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
-params = {"sol": 1000, "camera": "fhaz", "api_key": "DEMO_KEY"}
-
 
 def get_mars_photos(url, params):
     """Отримання JSON з фотографіями з NASA API."""
@@ -41,6 +37,10 @@ def save_all_photos(data, sol_number):
 
 
 if __name__ == "__main__":
+    # Основні параметри
+    url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
+    params = {"sol": 1000, "camera": "fhaz", "api_key": "DEMO_KEY"}
+
     sol = params["sol"]
     mars_photos = get_mars_photos(url, params)
     if mars_photos and mars_photos.get("photos"):
