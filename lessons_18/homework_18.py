@@ -28,7 +28,7 @@ def download_mars_photos(sol, camera, api_key = 'DEMO_KEY', limit=None, folder='
     if limit:
         photos = photos[:limit]
 
-    print(f"\nЗавантаження {len(photos)} фото з Марсу 🌌🚀")
+    print(f"\nЗавантаження {len(photos)} фото з Марсу")
 
     for i, photo in enumerate(tqdm(photos, desc="Завантаження", unit="фото")):
         img_url = photo['img_src']
@@ -61,4 +61,4 @@ if __name__ == "__main__":
         limit = None
 
 
-download_mars_photos(sol=sol, camera=camera, limit=limit)
+    download_mars_photos(sol=sol, camera=camera, limit=limit)
