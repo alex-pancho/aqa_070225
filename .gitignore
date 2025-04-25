@@ -171,3 +171,11 @@ cython_debug/
 .pypirc
 
 .DS_Store
+lesson_13/groups.xml
+lesson_13/localizations_en.json
+lesson_13/localizations_ru.json
+lesson_13/login.json
+lesson_13/r-m-c.csv
+lesson_13/rmc.csv
+lesson_13/swagger.json
+shop.db
