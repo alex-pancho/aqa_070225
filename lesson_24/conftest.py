@@ -1,5 +1,17 @@
 import pytest
 import requests
+from requests.auth import HTTPBasicAuth
+
+@pytest.fixture(scope="session") 
+def auth_session():
+    session = requests.Session()
+    url = "http://127.0.0.1:8080/auth"
+    auth = HTTPBasicAuth('test_user', 'test_pass')
+    response = session.post(url, auth=auth)
+    assert response.status_code == 200
+    token = response.json()["access_token"]
+    session.headers.update({"Authorization": f"Bearer {token}"})
+    return session
 
 # Визначення фікстури з допомогою декоратора @pytest.fixture
 @pytest.fixture
