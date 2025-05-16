@@ -47,3 +47,25 @@ def input_data(request):
 def prepare_data(request):
     data = request.param * 2
     return data
+
+#Homework_24
+
+@pytest.fixture(scope='class')
+def get_token(request):
+    
+    s = requests.Session()
+    r = s.post('http://127.0.0.1:8080/auth', auth = ("test_user", "test_pass"))
+    token = r.json().get("access_token")
+    if not token:
+        raise ValueError("Token not found")
+    return token
+    
+@pytest.fixture(params=[
+    ("year", 2),
+    ('brand',50),
+    ('engine_volume', 4),
+    ("price", None),
+    (None, 100),
+    ])
+def test_data(request):
+    return request.param    
