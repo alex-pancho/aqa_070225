@@ -10,9 +10,9 @@ url = f"https://{username}:{passwd}@qauto2.forstudy.space"
 # XPATH
 SIGN_IN_BUTTON_XPATH = "//button[contains(@class, 'header_signin') and text()='Sign In']"
 GUEST_LOG_IN_XPATH = "//button[contains(@class, 'header-link') and contains(@class, '-guest') and text()='Guest log in']"
-LOG_IN_NoTXPATH = "//button[contains(@class, 'btn') and contains(@class, 'btn-primary') and text()='Login']"
+LOG_IN_XPATH = "//button[contains(@class, 'btn') and contains(@class, 'btn-primary') and text()='Login']"
 FORGOT_PASSWORD_XPATH = "//button[contains(@class, 'btn') and contains(@class, 'btn-link') and text()='Forgot password']"
-ReGISTRATION_XPATH = "//button[contains(@class, 'btn') and contains(@class, 'btn-link') and text()='Registration']"
+REGISTRATION_XPATH = "//button[contains(@class, 'btn') and contains(@class, 'btn-link') and text()='Registration']"
 SIGN_UP_XPATH = "//button[contains(@class, 'hero-descriptor_btn') and contains(@class, 'btn') and contains(@class, 'btn-primary') and text()='Sign up']"
 FACEBOOK_LINK_XPATH = "//a[contains(@href, 'facebook.com/Hillel') and contains(@class, 'socials_link')]"
 TELEGRAM_LINK_XPATH = "//a[contains(@href, 't.me/ithillel') and contains(@class, 'socials_link')]"
@@ -59,4 +59,9 @@ INSTRUCTIONS_TITLE_CSS = "div.col-lg-6 p.about-block_title.h2"
 SUPPORT_EMAIL_CSS = " a[href^='mailto:developer@ithillel.ua']"
 LOGO_SVG_CSS = "a.header_logo svg"
 SOCIALS_CONTAINER_CSS = "div.contacts_socials"
+ABOUT_BUTTON_CSS = "button[appscrollto='aboutSection']"
+CONTACTS_BUTTON_CSS = "button[appscrollto='contactsSection']"
+CONTACTS_HEADING_CSS = "div.contacts h2"
+
+
 
