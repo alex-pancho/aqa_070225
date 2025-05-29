@@ -171,3 +171,9 @@ cython_debug/
 .pypirc
 
 .DS_Store
+
+lesson_26/*.html
+
+lesson_13/work_with_csv/
+lesson_13/work_with_json/
+lesson_13/work_with_xml/
