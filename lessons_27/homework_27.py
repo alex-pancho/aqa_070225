@@ -26,7 +26,6 @@ class NovaPoshtaTracker:
         input_field.send_keys(ttn_number)
         input_field.send_keys(Keys.ENTER)
 
-        # Очікуємо появу повідомлення про помилку
         error_text_element = WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located(
                 (By.ID, "np-number-input-desktop-message-error-message")
@@ -48,7 +47,7 @@ class NovaPoshtaTrackingTest(unittest.TestCase):
         self.driver.quit()
 
     def test_invalid_ttn_shows_error(self):
-        ttn = "12345678901234"  # фейковий/неіснуючий ТТН
+        ttn = "12345678901234"  
         expected_phrase = "не знайшли посилку"
 
         error_message = self.tracker.get_error_message(ttn)
