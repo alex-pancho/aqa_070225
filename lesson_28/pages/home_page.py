@@ -9,7 +9,7 @@ class HomePage(BasePage):
     menu_home = '//a[text()="Home"]'
     sign_in_button = '//button[.="Sign In"]'
     contacts_head ='//h2'
-    sign_up_button='//button[.="Sign Up"]'
+    sign_up_button='//button[contains(text(), "Sign up")]'
     username_by='//[@name="email"]'
     password_by='//*[@id="signinPassword"]'
     signin_by='//form//div[.="Login"]'

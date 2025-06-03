@@ -1,0 +1,10 @@
+def test_registration(home_page, register_delete_user, garage_page, test_data):
+   home_page.item(home_page.sign_up_button).click()
+   assert register_delete_user.item(register_delete_user.name).is_visible()
+   register_delete_user.item(register_delete_user.name).send_keys(test_data["name"])
+   register_delete_user.item(register_delete_user.last_name).send_keys(test_data["last_name"])
+   register_delete_user.item(register_delete_user.email).send_keys(test_data["email"])
+   register_delete_user.item(register_delete_user.password).send_keys(test_data["password"])
+   register_delete_user.item(register_delete_user.re_enter_password ).send_keys(test_data["password"])
+   register_delete_user.item(register_delete_user.register_button).click()
+   assert garage_page.item(garage_page.profile).is_visible()
