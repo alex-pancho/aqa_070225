@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фрейм 1</title>
+    <title>Фрейм 2</title>
 </head>
 <body>
     <br/>
-    <h3>Frame1</h3>
-    <input type="text" id="input1" placeholder="Введіть текст">
-    <button onclick="verifyInput('input1')">Перевірити</button>
+    <h3>Frame2</h3>
+    <input type="text" id="input2" placeholder="Введіть текст">
+    <button onclick="verifyInput('input2')">Перевірити</button>
 
     <script>
         function verifyInput(inputId) {
             var inputValue = document.getElementById(inputId).value;
-            if (inputValue === "Frame1_Secret") {
+            if (inputValue === "Frame2_Secret") {
                 alert("Верифікація пройшла успішно!");
             } else {
                 alert("Введено неправильний текст!");
