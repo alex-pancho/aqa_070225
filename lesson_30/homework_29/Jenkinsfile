@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        PYTHON_IMAGE = 'python:3.11'
+    }
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/kolosar/aqa_070225.git'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                sh 'pytest --junitxml=report.xml'
+            }
+        }
+
+        stage('Publish test results') {
+            steps {
+                junit 'report.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            mail to: 'verakolosar@gmail.com',
+                 subject: "Pipeline Result: ${currentBuild.currentResult}",
+                 body: "Pipeline for ${env.JOB_NAME} #${env.BUILD_NUMBER} finished with status: ${currentBuild.currentResult}"
+        }
+    }
+}
+docker.image('python:3.11').inside {
+    sh 'pip install -r requirements.txt'
+    sh 'pytest'
+}
