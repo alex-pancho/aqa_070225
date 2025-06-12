@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: testdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: >
+      sh -c "pip install -r requirements.txt &&
+             pytest tests/ --junitxml=report.xml"
+    networks:
+      - app-net
+
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/usr/src/app
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  db_data:
+  jenkins_home:

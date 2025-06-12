@@ -1,11 +1,16 @@
-# Використовуємо офіційний образ Python версії 3.9
-FROM python:3.11
-# Копіюємо файли з локальної директорії в контейнер
-COPY . /app
-# Встановлюємо залежності для тестування
-RUN pip install -r app/requirements.txt
-# -r requirements.txt
-# Задаємо робочу директорію контейнера
+FROM python:3.11-slim
+
+# Встановлюємо робочий каталог
 WORKDIR /app
-# Виконуємо команду для запуску тестів під час створення контейнера
-CMD ["pytest", "-v", "/app/lesson_24"]
+
+# Копіюємо requirements.txt у контейнер
+COPY requirements.txt .
+
+# Встановлюємо залежності
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копіюємо решту файлів (код, тести, модулі)
+COPY . .
+
+# Встановлюємо команду за замовчуванням (запуск тестів)
+CMD ["pytest", "-v", "lesson_29_homework/tests/"]
