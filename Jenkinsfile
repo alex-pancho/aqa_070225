@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
-                    pytest lesson_29_homework/tests/ --junitxml=report.xml
+                    pytest lesson_29/lesson_29_homework/tests/ --junitxml=report.xml -v
                 '''
             }
         }
