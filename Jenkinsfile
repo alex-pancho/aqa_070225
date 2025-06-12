@@ -1,9 +1,11 @@
 pipeline {
     agent any
 
+
     environment {
         VENV_PATH = "${WORKSPACE}/venv"
     }
+
 
     stages {
         stage('Clone repo') {
@@ -11,6 +13,7 @@ pipeline {
                 git branch: 'homework29', url: 'https://github.com/Julialaz/aqa_070225.git'
             }
         }
+
 
         stage('Install dependencies') {
             steps {
@@ -23,14 +26,16 @@ pipeline {
             }
         }
 
+
         stage('Run tests') {
             steps {
                 sh '''
                     . venv/bin/activate
-                    pytest lesson_29/lesson_29_homework/tests/ --junitxml=report.xml -v
+                    pytest lesson_29_homework/tests/ --junitxml=report.xml
                 '''
             }
         }
+
 
         stage('Publish results') {
             steps {
@@ -38,6 +43,7 @@ pipeline {
             }
         }
     }
+
 
     post {
         always {
