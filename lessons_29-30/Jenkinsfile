@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    environment {
+        DB_HOST = 'db'
+        DB_NAME = 'testdb'
+        DB_USER = 'testuser'
+        DB_PASS = 'testpass'
+        DB_CONTAINER = 'lessons_29_30-db-1'
+    }
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/iswwimm/aqa_070225.git', branch: 'homework_29_30'
+            }
+        }
+
+        stage('Build Docker image') {
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+
+        stage('Start containers and wait for DB') {
+            steps {
+                sh 'docker-compose up -d'
+
+                script {
+                    def timeout = 60
+                    def sleepTime = 3
+                    def isReady = false
+                    while (timeout > 0) {
+                        def result = sh (
+                            script: "docker exec ${env.DB_CONTAINER} pg_isready -U ${env.DB_USER}",
+                            returnStatus: true
+                        )
+                        if (result == 0) {
+                            echo "Database is ready!"
+                            isReady = true
+                            break
+                        } else {
+                            echo "Waiting for DB to be ready..."
+                            sleep sleepTime
+                            timeout -= sleepTime
+                        }
+                    }
+                    if (!isReady) {
+                        error "Database did not become ready in time."
+                    }
+                }
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                sh 'docker-compose run app python test_app.py'
+            }
+        }
+
+        stage('Publish Results') {
+            steps {
+                junit 'test-results/*.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker-compose down'
+            echo "Pipeline finished"
+        }
+        success {
+            echo "Tests passed successfully!"
+        }
+        failure {
+            echo "Tests failed!"
+        }
+        unstable {
+            echo "Pipeline is unstable (some tests failed or warnings)"
+        }
+    }
+}
