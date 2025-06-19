@@ -6,7 +6,7 @@ def get_connection():
             dbname="my_database",
             user="postgres",
             password="test",
-            host="db",
+            host="localhost",
             port="5432"
         )
     except Exception as e:
