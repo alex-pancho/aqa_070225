@@ -27,4 +27,18 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            emailext (
+                to: "${RECIPIENT}",
+                subject: "Jenkins Pipeline: Результат тестування проекту ${currentBuild.fullDisplayName}",
+                body: """
+                
+                ${currentBuild.currentResult}
+
+               
+                """
+            )
+        }
+    }
 }
