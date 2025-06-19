@@ -30,7 +30,7 @@ pipeline {
     post {
         always {
             emailext (
-                to: "${RECIPIENT}",
+                to: "dmytriv.lyubov@gmail.com",
                 subject: "Jenkins Pipeline: Результат тестування проекту ${currentBuild.fullDisplayName}",
                 body: """
                 
