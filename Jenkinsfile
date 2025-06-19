@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone source') {
             steps {
-                git url: 'https://github.com/alex-pancho/aqa_070225', branch: 'main'
+                git url: 'https://github.com/lydmy/aqa_070225', branch: 'homework__29'
             }
         }
         stage('Build and activate venv') {
