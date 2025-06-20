@@ -1,14 +1,17 @@
+"""Setup for tests."""
+
 import logging
 from logging.handlers import RotatingFileHandler
 
 import pytest
 from selenium import webdriver
 
-BASE_URL = 'https://guest:welcome2qauto@qauto2.forstudy.space'
-DRIVERS = {
+base_url = 'https://tracking.novaposhta.ua/#/uk'
+drivers = {
     'Chrome': webdriver.Chrome,
-    # 'Firefox': webdriver.Firefox,
+    'Firefox': webdriver.Firefox,
 }
+
 
 # Logger setup
 @pytest.fixture(scope='session', autouse=True)
@@ -33,17 +36,15 @@ def test_logger():
     return logger
 
 # WebDriver setup
-@pytest.fixture(params=DRIVERS.keys(), scope='class')
+@pytest.fixture(params=drivers.keys(), scope='class')
 def driver(request):
     """WebDriver setup."""
     browser_name = request.param
-    driver = None
     try:
-        driver = DRIVERS[browser_name]()
-        driver.get(BASE_URL)
+        driver = drivers[browser_name]()
+        driver.get(base_url)
         yield driver
     except Exception as e:
         pytest.fail(f"Error initializing {browser_name} driver: {e}")
     finally:
-        if driver:
-            driver.quit()
+        driver.quit()
