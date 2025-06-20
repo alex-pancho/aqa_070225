@@ -41,6 +41,7 @@ pipeline {
                 attachmentsPattern: '**/report.html',
                 mimeType: 'text/html'
             )
+
         }
     }
 }
