@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/kostya99912/aqa_070225', branch: 'homework29-30'
+            }
+        }
+
+        stage('Run tests with Docker') {
+            steps {
+                sh '''
+                    docker-compose down -v || true
+                    docker-compose up --build --abort-on-container-exit
+                '''
+            }
+        }
+
+        stage('Publish Test Report') {
+            steps {
+                junit 'tmp/report.xml'  
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker-compose down -v || true'
+        }
+    }
+}
